@@ -17,3 +17,29 @@ listArea.innerHTML+= "<li>Item 5</li>";
 
 //insertAdjacentHTML es un mejor método
 listArea.insertAdjacentHTML("beforeend","<li>Item 6</li>");
+
+//createElement
+const newPElement = document.createElement("p"); //creo la etiqueta.
+
+newPElement.textContent = "creado con createElement"; //le asigno el contenido a la etiqueta.
+
+contentArea.append(newPElement);
+
+
+//creando con prepend al inicio del elemento 
+// after elemento antes del otro elemento en base al que queremos
+//before antes del elemento elegido.
+const itemNuevo = document.createElement("li");
+itemNuevo.textContent = "Nuevo item!";
+
+listArea.prepend(itemNuevo);
+
+const itemNuevo2 = document.createElement("li");
+itemNuevo2.textContent = "Nuevo Item! Pero con before.";
+listArea.before(itemNuevo2);
+
+
+const itemAfter = document.createElement("li");
+itemAfter.textContent = "Item after";
+listArea.after(itemAfter);
+
