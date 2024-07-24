@@ -29,17 +29,38 @@ contentArea.append(newPElement);
 //creando con prepend al inicio del elemento 
 // after elemento antes del otro elemento en base al que queremos
 //before antes del elemento elegido.
-const itemNuevo = document.createElement("li");
+/* const itemNuevo = document.createElement("li");
 itemNuevo.textContent = "Nuevo item!";
 
 listArea.prepend(itemNuevo);
 
 const itemNuevo2 = document.createElement("li");
 itemNuevo2.textContent = "Nuevo Item! Pero con before.";
-listArea.before(itemNuevo2);
+listArea.before(itemNuevo2); */
 
 
-const itemAfter = document.createElement("li");
+/* const itemAfter = document.createElement("li");
 itemAfter.textContent = "Item after";
-listArea.after(itemAfter);
+listArea.after(itemAfter); */
+
+//remove child
+/* 
+const firsItem = document.querySelector("li"); //nos devuelve el primer li que encuentra.
+
+const lista = document.querySelector("ul");
+
+lista.removeChild(lista.firstElementChild); */
+
+
+//cloneNode
+/* const areaSelection = document.querySelector("#contentArea");  
+
+const originalP = areaSelection.querySelector("p");
+
+const cloneP = originalP.cloneNode(true); */
+
+//replaceWith
+
+const listaReplace = document.querySelector("#listArea");
+
 
