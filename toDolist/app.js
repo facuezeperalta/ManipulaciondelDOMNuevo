@@ -5,6 +5,9 @@ const formulario = document.querySelector("#task-form");
 
 const taskList = document.getElementById("task-list");
 
+//ejecuto la función al comienzo para que cargue las tareas guardads apenas inicia la página.
+loadTask();
+
 formulario.addEventListener("submit",(event)=>{
     event.preventDefault(); //prevenimos su comportamiento por defecto del formulario.
 
@@ -17,6 +20,7 @@ formulario.addEventListener("submit",(event)=>{
     //compruebo si el task esta, de estarlo llamo a la función createTaskElement para crear el elemento junto con sus botones
     if(taskValue){
         taskList.append(createTaskElement(taskValue));
+        storeTaskInLocalStorage(taskValue);
         taskInput.value = "";
     }
 });
@@ -65,4 +69,22 @@ function editTask(taskItem){
     if(newTask !== null){
         taskItem.firstChild.textContent = newTask;
     }
+}
+
+
+//creamos una función para guardar cosas el localStorage
+
+function storeTaskInLocalStorage(task){
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]"); //Json.parse convierte una cadena de texto a un obejto en JS.
+
+    tasks.push(task);
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
+
+
+function loadTask(  ){
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    tasks.forEach( (task) => {
+        taskList.appendChild(createTaskElement(task));
+    });
 }
