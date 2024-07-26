@@ -40,3 +40,29 @@ function createButton(text,className){
     btn.className = className;
     return btn;    
 }
+
+//usamos la delegacion de evento. para obtener el tipo de botón que estamos tocando.
+taskList.addEventListener("click", (event) =>{
+    console.log(event.target );
+    if(event.target.classList.contains ("delete-btn")){
+        deleteTask(event.target.parentElement);
+    }else if(event.target.classList.contains ("edit-btn")){
+        editTask(event.target.parentElement);
+    }
+})
+
+
+
+function deleteTask (taskItem){
+    if(confirm ("Estas seguro que quiere borrar esta tarea?")){
+        taskItem.remove();
+    }
+}
+
+
+function editTask(taskItem){
+    const newTask = prompt("Edita tu tarea: ",taskItem.firstChild.textContent);
+    if(newTask !== null){
+        taskItem.firstChild.textContent = newTask;
+    }
+}
