@@ -68,6 +68,7 @@ function editTask(taskItem){
     const newTask = prompt("Edita tu tarea: ",taskItem.firstChild.textContent);
     if(newTask !== null){
         taskItem.firstChild.textContent = newTask;
+
     }
 }
 
@@ -87,4 +88,9 @@ function loadTask(){
     tasks.forEach( (task) => {
         taskList.appendChild(createTaskElement(task));
     });
+}
+
+
+function updateLocalStorage(){
+    const tasks = taskList.querySelectorAll("li");
 }
