@@ -60,6 +60,7 @@ taskList.addEventListener("click", (event) =>{
 function deleteTask (taskItem){
     if(confirm ("Estas seguro que quiere borrar esta tarea?")){
         taskItem.remove();
+        updateLocalStorage();
     }
 }
 
@@ -68,7 +69,7 @@ function editTask(taskItem){
     const newTask = prompt("Edita tu tarea: ",taskItem.firstChild.textContent);
     if(newTask !== null){
         taskItem.firstChild.textContent = newTask;
-
+        updateLocalStorage();
     }
 }
 
@@ -92,5 +93,9 @@ function loadTask(){
 
 
 function updateLocalStorage(){
-    const tasks = taskList.querySelectorAll("li");
+    const tasks = Array.from(taskList.querySelectorAll("li")).map(
+        (li) => li.firstChild.textContent); //aca busco y traigo los li de la lista de tareas, y con una función map obtengo el contenido de texto que tienen.
+    //ahora actualizo el localStorage.
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+    console.log()
 }
